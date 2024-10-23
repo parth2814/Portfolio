@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    // url: "https://yourportfolio.com",
+    url: "https://parth-m0n4rch.vercel.app/",
     siteName: "Parth Panchal - Cyber Security Portfolio",
     title: "Parth Panchal | Cyber Security Expert & Ethical Hacker",
     description:

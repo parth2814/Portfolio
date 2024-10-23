@@ -60,15 +60,15 @@ export default function BlogPostDisplay({ slug }: { slug: string }) {
         setNextPost(data.nextPost);
         setPrevPost(data.prevPost);
 
-        // Extract headings from the content
-        const headingRegex = /^(#{1,3})\s+(.+)$/gm;
+        // Modified heading extraction to only get h1 (single #)
+        const headingRegex = /^(#)\s+(.+)$/gm;
         const extractedHeadings = [];
         let match;
         while ((match = headingRegex.exec(data.post.content)) !== null) {
           extractedHeadings.push({
             id: match[2].toLowerCase().replace(/\s+/g, "-"),
             title: match[2],
-            level: match[1].length,
+            level: 1, // Always level 1 since we're only capturing h1
           });
         }
         setHeadings(extractedHeadings);
@@ -116,21 +116,14 @@ export default function BlogPostDisplay({ slug }: { slug: string }) {
       >
         <X size={24} />
       </button>
-      <h3 className="text-[#00ff00] font-semibold mb-4 mt-8">
-        Table of Contents
-      </h3>
+      <h3 className="text-[#00ff00] font-semibold mb-4 mt-8">Sections</h3>
       <nav className="space-y-2">
         {headings.map((heading) => (
           <motion.a
             key={heading.id}
             href={`#${heading.id}`}
             className={cn(
-              "block text-gray-400 hover:text-[#00ff00] transition-colors duration-200",
-              heading.level === 1
-                ? "font-semibold"
-                : heading.level === 2
-                ? "pl-4"
-                : "pl-8",
+              "block text-gray-400 hover:text-[#00ff00] transition-colors duration-200 font-semibold",
               activeSection === heading.id && "text-[#00ff00]"
             )}
             onClick={() => setIsSidebarOpen(false)}
@@ -166,7 +159,7 @@ export default function BlogPostDisplay({ slug }: { slug: string }) {
         transition={{ duration: 0.5 }}
         className="container mx-auto px-4 py-8 max-w-4xl relative"
       >
-        {/* Matrix-like background effect */}
+        {/* Matrix-like background effect
         <motion.div
           className="fixed inset-0 pointer-events-none z-[-1]"
           initial={{ opacity: 0 }}
@@ -176,7 +169,7 @@ export default function BlogPostDisplay({ slug }: { slug: string }) {
             backgroundImage: `radial-gradient(#00ff00 1px, transparent 1px)`,
             backgroundSize: "50px 50px",
           }}
-        />
+        /> */}
 
         {/* Progress bar */}
         <motion.div
@@ -301,21 +294,14 @@ export default function BlogPostDisplay({ slug }: { slug: string }) {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <div className="sticky top-20 max-h-[calc(100vh-5rem)] overflow-y-auto">
-              <h3 className="text-[#00ff00] font-semibold mb-4">
-                Table of Contents
-              </h3>
-              <nav className="space-y-2">
+              <h3 className="text-[#00ff00] font-semibold mb-4">Sections</h3>
+              <nav className="space-y-3">
                 {headings.map((heading, index) => (
                   <motion.a
                     key={heading.id}
                     href={`#${heading.id}`}
                     className={cn(
-                      "block text-gray-400 hover:text-[#00ff00] transition-colors duration-200",
-                      heading.level === 1
-                        ? "font-semibold"
-                        : heading.level === 2
-                        ? "pl-4"
-                        : "pl-8",
+                      "block text-gray-400 hover:text-[#00ff00] transition-colors duration-200 font-semibold",
                       activeSection === heading.id && "text-[#00ff00]"
                     )}
                     initial={{ opacity: 0, x: 10 }}
