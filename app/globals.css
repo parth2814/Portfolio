@@ -76,3 +76,29 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+.bg-grid-green-02 { /* Changed class name to a valid format */
+  background-image: linear-gradient(to right, rgba(0, 255, 0, 0.02) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0, 255, 0, 0.02) 1px, transparent 1px); /* Added missing semicolon */
+}
+
+/* Custom scrollbar for code blocks */
+pre::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+pre::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 0, 0.2);
+  border-radius: 4px;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 0, 0.3);
+}

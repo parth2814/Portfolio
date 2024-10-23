@@ -52,7 +52,7 @@ export function LandingPage() {
       title: "Upcoming Project",
       description: "New security tool in development. Stay tuned for updates!",
       image: "/comingsoon.png",
-      link: "#",
+      link: "/",
       tags: ["Coming Soon"],
     },
   ];
