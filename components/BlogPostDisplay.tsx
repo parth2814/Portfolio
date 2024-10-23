@@ -3,27 +3,22 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import {
   ArrowLeft,
   ArrowRight,
   ChevronLeft,
   Eye,
   Clock,
-  Copy,
-  Check,
   X,
   Menu,
 } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import ReactMarkdown from "react-markdown";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { toast } from "sonner";
 import React from "react";
 import { cn } from "@/lib/utils";
+import markdownComponents from "@/lib/markdownComp";
 
 interface BlogPost {
   title: string;
@@ -33,43 +28,6 @@ interface BlogPost {
   content: string;
   slug: string;
   readingTime?: string;
-}
-
-interface MarkdownBaseProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
-interface CopyButtonProps {
-  text: string;
-}
-
-interface CodeBlockProps extends MarkdownBaseProps {
-  inline?: boolean;
-  className?: string;
-  node?: any;
-}
-
-interface ImageProps {
-  src?: string;
-  alt?: string;
-}
-
-interface LinkProps extends MarkdownBaseProps {
-  href?: string;
-}
-
-interface MarkdownComponents {
-  h1: React.ComponentType<MarkdownBaseProps>;
-  h2: React.ComponentType<MarkdownBaseProps>;
-  h3: React.ComponentType<MarkdownBaseProps>;
-  p: React.ComponentType<MarkdownBaseProps>;
-  code: React.ComponentType<CodeBlockProps>;
-  img: React.ComponentType<ImageProps>;
-  a: React.ComponentType<LinkProps>;
-  blockquote: React.ComponentType<MarkdownBaseProps>;
-  ul: React.ComponentType<MarkdownBaseProps>;
-  ol: React.ComponentType<MarkdownBaseProps>;
 }
 
 export default function BlogPostDisplay({ slug }: { slug: string }) {
@@ -142,227 +100,6 @@ export default function BlogPostDisplay({ slug }: { slug: string }) {
 
     return () => observer.disconnect();
   }, [headings]);
-
-  const CopyButton = ({ text }: CopyButtonProps) => {
-    const [copied, setCopied] = useState(false);
-
-    const copyToClipboard = async () => {
-      try {
-        await navigator.clipboard.writeText(text);
-        setCopied(true);
-        toast("Copied to clipboard");
-        setTimeout(() => setCopied(false), 2000);
-      } catch (err) {
-        console.error("Failed to copy text:", err);
-      }
-    };
-
-    return (
-      <motion.button
-        onClick={(e) => {
-          e.stopPropagation();
-          copyToClipboard();
-        }}
-        className="absolute top-3 right-3 p-2 rounded-md bg-black/40 backdrop-blur-sm border border-gray-800 
-                 hover:border-[#00ff00]/50 hover:bg-[#00ff00]/10 transition-all duration-300 
-                 z-10 group flex items-center gap-2"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        aria-label="Copy code"
-      >
-        {copied ? (
-          <>
-            <Check className="h-4 w-4 text-[#00ff00]" />
-            <span className="text-xs text-[#00ff00]">Copied!</span>
-          </>
-        ) : (
-          <>
-            <Copy className="h-4 w-4 text-gray-400 group-hover:text-[#00ff00]" />
-            <span className="text-xs text-gray-400 group-hover:text-[#00ff00]">
-              Copy
-            </span>
-          </>
-        )}
-      </motion.button>
-    );
-  };
-
-  const markdownComponents: MarkdownComponents = {
-    h1: ({ children }: MarkdownBaseProps) => (
-      <motion.h1
-        id={children?.toString().toLowerCase().replace(/\s+/g, "-")}
-        className="text-3xl font-bold text-[#00ff00] mt-8 mb-4 tracking-tight"
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        {children}
-      </motion.h1>
-    ),
-    h2: ({ children }: MarkdownBaseProps) => (
-      <motion.h2
-        id={children?.toString().toLowerCase().replace(/\s+/g, "-")}
-        className="text-2xl font-semibold text-[#00ff00]/90 mt-6 mb-3 tracking-tight"
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-      >
-        {children}
-      </motion.h2>
-    ),
-    h3: ({ children }: MarkdownBaseProps) => (
-      <h3
-        id={children?.toString().toLowerCase().replace(/\s+/g, "-")}
-        className="text-xl font-medium text-[#00ff00]/80 mt-4 mb-2"
-      >
-        {children}
-      </h3>
-    ),
-    p: ({ children }: MarkdownBaseProps) => (
-      <p className="text-gray-300 leading-7 mb-4 text-lg tracking-wide">
-        {children}
-      </p>
-    ),
-    code: ({ node, inline, className, children, ...props }: CodeBlockProps) => {
-      const match = /language-(\w+)/.exec(className || "");
-      const codeString = String(children).replace(/\n$/, "");
-
-      if (!inline && match) {
-        return (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="relative my-8 group rounded-xl overflow-hidden"
-          >
-            {/* Header bar */}
-            <div
-              className="absolute top-0 left-0 right-0 h-12 bg-gray-900/80 backdrop-blur-sm 
-                      border-b border-gray-800 z-[1] px-4 flex items-center justify-between"
-            >
-              <div className="flex items-center gap-2">
-                {/* Fake traffic lights */}
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-500/70" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/70" />
-                </div>
-                <div className="ml-3 px-2 py-1 rounded-md bg-black/30 border border-gray-800">
-                  <span className="text-xs font-mono text-gray-400">
-                    {match[1].toUpperCase()}
-                  </span>
-                </div>
-              </div>
-              <CopyButton text={codeString} />
-            </div>
-
-            {/* Code content */}
-            <div className="relative">
-              {/* Background effects */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-sm" />
-              <div className="absolute inset-0 bg-grid-green-02 bg-[length:24px_24px]" />
-
-              {/* Main code block */}
-              <div className="relative">
-                <SyntaxHighlighter
-                  style={atomDark}
-                  language={match[1]}
-                  PreTag="div"
-                  customStyle={{
-                    background: "transparent",
-                    padding: "4rem 1.5rem 1.5rem 1.5rem",
-                    margin: 0,
-                    borderRadius: 0,
-                  }}
-                  codeTagProps={{
-                    style: {
-                      fontFamily: "JetBrains Mono, monospace",
-                      fontSize: "0.9rem",
-                      lineHeight: "1.5",
-                    },
-                  }}
-                  {...props}
-                >
-                  {codeString}
-                </SyntaxHighlighter>
-              </div>
-
-              {/* Hover effects */}
-              <motion.div
-                className="absolute inset-0 border-2 border-transparent rounded-xl transition-all duration-300
-                     group-hover:border-[#00ff00]/20 pointer-events-none"
-                initial={false}
-                animate={{
-                  boxShadow: "0 0 20px rgba(0, 255, 0, 0.05)",
-                }}
-              />
-            </div>
-
-            {/* Line numbers background */}
-            <div className="absolute left-0 top-12 bottom-0 w-12 bg-black/20" />
-          </motion.div>
-        );
-      }
-
-      return (
-        <code className="px-1.5 py-0.5 rounded-md font-mono text-sm bg-[#00ff00]/10 text-[#00ff00] border border-[#00ff00]/20">
-          {children}
-        </code>
-      );
-    },
-    img: ({ src, alt }: ImageProps) => (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="my-8 rounded-lg overflow-hidden relative"
-        whileHover={{ scale: 1.02 }}
-      >
-        <Image
-          src={"/" + src || ""}
-          alt={alt || ""}
-          width={800}
-          height={500}
-          className="rounded-lg object-cover"
-        />
-      </motion.div>
-    ),
-    a: ({ children, href }: LinkProps) => (
-      <motion.a
-        href={href}
-        className="text-[#00ff00] hover:text-white relative inline-block"
-        target="_blank"
-        rel="noopener noreferrer"
-        whileHover={{ scale: 1.05 }}
-      >
-        {children}
-        <motion.span
-          className="absolute bottom-0 left-0 w-full h-0.5 bg-[#00ff00]"
-          initial={{ scaleX: 0 }}
-          whileHover={{ scaleX: 1 }}
-          transition={{ duration: 0.3 }}
-        />
-      </motion.a>
-    ),
-    blockquote: ({ children }: MarkdownBaseProps) => (
-      <motion.blockquote
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-        className="border-l-4 border-[#00ff00] pl-6 my-6 italic bg-black/20 py-4 pr-4 rounded-r-lg backdrop-blur-sm"
-      >
-        <p className="text-gray-300">{children}</p>
-      </motion.blockquote>
-    ),
-    ul: ({ children }: MarkdownBaseProps) => (
-      <ul className="space-y-2 my-4">{children}</ul>
-    ),
-    ol: ({ children }: MarkdownBaseProps) => (
-      <ol className="list-decimal list-inside space-y-2 my-4 ml-6 text-gray-300">
-        {children}
-      </ol>
-    ),
-  };
 
   const SideNavigation = () => (
     <motion.div
