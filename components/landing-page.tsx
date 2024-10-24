@@ -128,7 +128,7 @@ export function LandingPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            @PARTHPANCHAL
+            @M0n4rch
           </motion.span>
         </motion.h1>
 
