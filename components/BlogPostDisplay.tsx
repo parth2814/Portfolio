@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import React from "react";
 import { cn } from "@/lib/utils";
-import markdownComponents from "@/lib/markdownComp";
+import { BlogMarkdownComponents } from "@/lib/markdownComp";
 
 interface BlogPost {
   title: string;
@@ -249,7 +249,7 @@ export default function BlogPostDisplay({ slug }: { slug: string }) {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   className="prose prose-invert max-w-none"
                 >
-                  <ReactMarkdown components={markdownComponents}>
+                  <ReactMarkdown components={BlogMarkdownComponents}>
                     {post.content}
                   </ReactMarkdown>
                 </motion.div>
