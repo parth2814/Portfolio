@@ -49,6 +49,18 @@ export default function BlogPostDisplay({ slug }: { slug: string }) {
     restDelta: 0.001,
   });
 
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string
+  ) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setIsSidebarOpen(false);
+    }
+  };
+
   useEffect(() => {
     async function fetchPost() {
       setIsLoading(true);
@@ -60,15 +72,15 @@ export default function BlogPostDisplay({ slug }: { slug: string }) {
         setNextPost(data.nextPost);
         setPrevPost(data.prevPost);
 
-        // Modified heading extraction to only get h1 (single #)
-        const headingRegex = /^(#)\s+(.+)$/gm;
+        // Only extract h1 headings (single #)
+        const headingRegex = /^#\s+([^#\n]+)/gm;
         const extractedHeadings = [];
         let match;
         while ((match = headingRegex.exec(data.post.content)) !== null) {
           extractedHeadings.push({
-            id: match[2].toLowerCase().replace(/\s+/g, "-"),
-            title: match[2],
-            level: 1, // Always level 1 since we're only capturing h1
+            id: match[1].trim().toLowerCase().replace(/\s+/g, "-"),
+            title: match[1].trim(),
+            level: 1,
           });
         }
         setHeadings(extractedHeadings);
@@ -296,7 +308,7 @@ export default function BlogPostDisplay({ slug }: { slug: string }) {
             <div className="sticky top-20 max-h-[calc(100vh-5rem)] overflow-y-auto">
               <h3 className="text-[#00ff00] font-semibold mb-4">Sections</h3>
               <nav className="space-y-3">
-                {headings.map((heading, index) => (
+                {headings.map((heading) => (
                   <motion.a
                     key={heading.id}
                     href={`#${heading.id}`}
@@ -304,9 +316,7 @@ export default function BlogPostDisplay({ slug }: { slug: string }) {
                       "block text-gray-400 hover:text-[#00ff00] transition-colors duration-200 font-semibold",
                       activeSection === heading.id && "text-[#00ff00]"
                     )}
-                    initial={{ opacity: 0, x: 10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
+                    onClick={(e) => handleNavClick(e, heading.id)}
                   >
                     {heading.title}
                   </motion.a>

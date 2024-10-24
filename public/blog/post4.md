@@ -5,8 +5,6 @@ date: "2024-08-11"
 views: 1337
 ---
 
-# 🎯 CTF Challenge Writeups 2024
-
 # 🚩 Welcome
 ![Image-1](image/6.png)
 
@@ -201,7 +199,6 @@ def int_to_ascii(m):
     )  # Hex to Ascii
     return m_ascii
 
-# Find padding
 getcontext().prec = 280  # Increase precision
 padding = 0
 for k in tqdm(range(0, 10_000)):
@@ -214,7 +211,6 @@ for k in tqdm(range(0, 10_000)):
 
 print("Padding: %s" % padding)
 
-# Increase precision further to get entire flag
 getcontext().prec = 700
 
 m = pow(padding * N + c, 1 / e)
