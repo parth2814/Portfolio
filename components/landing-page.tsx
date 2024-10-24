@@ -86,7 +86,7 @@ export function LandingPage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="min-h-screen p-12 flex flex-col items-start relative"
+      className="min-h-screen p-6 sm:p-12 flex flex-col items-start relative"
     >
       {/* Matrix-like background effect */}
       <motion.div
@@ -116,7 +116,7 @@ export function LandingPage() {
         </motion.div>
 
         <motion.h1
-          className="text-4xl font-extrabold text-[#00ff00] mb-4 tracking-wider"
+          className="text-3xl sm:text-4xl font-extrabold text-[#00ff00] mb-4 tracking-wider"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
@@ -138,7 +138,7 @@ export function LandingPage() {
           animate="visible"
         >
           <motion.h2
-            className="text-2xl mb-6 font-light tracking-wide"
+            className="text-xl sm:text-2xl mb-6 font-light tracking-wide"
             variants={textRevealVariants}
             custom={0}
           >
@@ -183,23 +183,21 @@ export function LandingPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1 }}
       >
-        <p className="text-[#ff6600] mb-6 font-medium">
-          <div className="flex items-center">
-            <motion.div
-              className="w-4 h-4 rounded-full bg-[#ff6600] mr-4 shadow-[0_0_10px_#ff6600]"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.7, 1, 0.7],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-            <span>CURRENTLY AVAILABLE FOR A FULL-TIME JOB OR INTERNSHIP.</span>
-          </div>
-        </p>
+        <div className="flex items-center text-[#ff6600] mb-6 font-medium">
+          <motion.div
+            className="w-4 h-4 rounded-full bg-[#ff6600] mr-4 shadow-[0_0_10px_#ff6600]"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.7, 1, 0.7],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <p className="text-sm sm:text-base">CURRENTLY AVAILABLE FOR A FULLTIME JOB OR INTERNSHIP.</p>
+        </div>
 
         <div className="flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-4 items-center">
           <TooltipProvider>
@@ -226,7 +224,7 @@ export function LandingPage() {
                 <p>Copy to clipboard</p>
               </TooltipContent>
               <TooltipTrigger>
-                <motion.button
+                <motion.a
                   onClick={() => {
                     navigator.clipboard.writeText("parthkpanchal12@gmail.com");
                     toast("Mail copied to clipboard");
@@ -239,12 +237,12 @@ export function LandingPage() {
                   whileTap={{ scale: 0.95 }}
                 >
                   <Clipboard className="text-[#00ff00]" size={20} />
-                </motion.button>
+                </motion.a>
               </TooltipTrigger>
             </Tooltip>
           </TooltipProvider>
           <motion.p
-            className="text-center sm:text-left sm:ml-4"
+            className="text-center sm:text-left sm:ml-4 text-sm sm:text-base"
             variants={textRevealVariants}
             custom={3}
           >
@@ -295,7 +293,7 @@ export function LandingPage() {
         transition={{ delay: 1.4 }}
       >
         <h3 className="text-gray-400 mb-4 font-medium">ELSEWHERE</h3>
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
           {[
             {
               name: "X",
@@ -309,7 +307,7 @@ export function LandingPage() {
               href={platform.link}
               target="_blank" // Opens link in new tab
               rel="noopener noreferrer" // Security best practice
-              className="text-[#00ff00] hover:text-white transition-colors duration-300"
+              className="text-[#00ff00] hover:text-white transition-colors duration-300 text-sm sm:text-base"
               whileHover={{
                 scale: 1.1,
                 textShadow: "0 0 8px rgba(0, 255, 0, 0.8)",
@@ -332,7 +330,7 @@ export function LandingPage() {
           transition={{ delay: 1.5 }}
         >
           <h3 className="text-gray-400 mb-6 font-medium">PROJECTS</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <motion.div
                 key={project.title}
@@ -344,7 +342,7 @@ export function LandingPage() {
                 onHoverEnd={() => setSelectedProject(null)}
                 whileHover={{ scale: 1.02 }}
               >
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-48 sm:h-64 overflow-hidden">
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"
                     initial={{ opacity: 0 }}
@@ -368,7 +366,7 @@ export function LandingPage() {
                 </div>
 
                 <motion.div
-                  className="absolute bottom-0 left-0 right-0 p-6 z-20"
+                  className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{
                     opacity: selectedProject === project.title ? 1 : 0,
@@ -376,7 +374,7 @@ export function LandingPage() {
                   }}
                   transition={{ duration: 0.3 }}
                 >
-                  <h4 className="text-xl font-bold text-white mb-2">
+                  <h4 className="text-lg sm:text-xl font-bold text-white mb-2">
                     {project.title}
                   </h4>
                   <p className="text-gray-200 text-sm mb-4">

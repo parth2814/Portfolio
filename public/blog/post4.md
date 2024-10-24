@@ -11,7 +11,7 @@ views: 1337
 You will get the flag from the website:
 ![Image-2](image/7.png)
 
-<div class="section-divider"></div>
+ >
 
 # 🔍 OSINT Challenge
 ## Hacking The Administrators
@@ -62,7 +62,7 @@ Successfully accessed using password `meowsaurabh123!`:
 ### 🏆 Flag Obtained
 ![Screenshot 2024-08-11 123047.png](image/39.png)
 
-<div class="section-divider"></div>
+ >
 
 # ☁️ Cloud Challenges
 
@@ -122,7 +122,7 @@ curl -O https://kpmg-ctf1.s3.ap-south-1.amazonaws.com/rituognriteuonhbiorentgbvh
 ### Flag Obtained
 ![image.png](image/5.png)
 
-<div class="section-divider"></div>
+ >
 
 # 🌐 Web Challenge
 ## Memorandum Dissolve 5
@@ -150,7 +150,7 @@ admin → 21232f297a57a5a743894aee4a801fc3
 ![Screenshot 2024-08-11 121457.png](image/28.png)
 ![Screenshot 2024-08-11 121506.png](image/31.png)
 
-<div class="section-divider"></div>
+ >
 
 # 🔒 Infrastructure Security
 ## Assassins Brotherhood - 1
@@ -169,7 +169,7 @@ admin → 21232f297a57a5a743894aee4a801fc3
 ### SSH Access & Flag
 ![Screenshot 2024-08-11 120528.png](image/23.png)
 
-<div class="section-divider"></div>
+ >
 
 # 🔐 Cryptography
 ## Challenge 1: Micro RSA
@@ -240,7 +240,7 @@ print("Flag: %s" % m_ascii.strip())
 ![Screenshot 2024-08-11 121837.png](image/45.png)
 ![Screenshot 2024-08-11 121903.png](image/43.png)
 
-<div class="section-divider"></div>
+ >
 
 # 📱 Mobile
 ## Android CryptoQuest
@@ -263,7 +263,7 @@ print("Flag: %s" % m_ascii.strip())
 ### Phase 5: Flag Assembly
 ![image.png](image/22.png)
 
-<div class="section-divider"></div>
+ >
 
 # 🏭 Operational Technology
 ## Challenge 1: Modulus bus Station
