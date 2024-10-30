@@ -107,12 +107,14 @@ export function LandingPage() {
           transition={{ type: "spring", stiffness: 300 }}
         >
           <Image
-            src="/image.png"
+            src="/2.jpg"
             alt="Parth Panchal"
             width={150}
             height={150}
-            className="rounded-full border-4 border-[#00ff00] relative z-10 object-cover"
+            className="rounded-full border-4 border-[#00ff00] object-cover"
+            style={{ aspectRatio: '1 / 1' }} // Optional: Maintain aspect ratio
           />
+
         </motion.div>
 
         <motion.h1
@@ -152,9 +154,9 @@ export function LandingPage() {
             variants={textRevealVariants}
             custom={1}
           >
-            Securing networks and systems with advanced penetration testing
-            techniques. Identifying vulnerabilities and providing robust
-            security solutions to safeguard against cyber threats.
+          I am an enthusiastic cybersecurity professional with a strong track record in Capture The Flag (CTF) challenges, 
+          including the Cyber Defense CTF by Level Effect and achieving 10th place in Hack the Havoc. 
+          I’ve earned the "Hacker" rank on Hack The Box (HTB).
           </motion.p>
 
           <motion.p
@@ -162,18 +164,18 @@ export function LandingPage() {
             variants={textRevealVariants}
             custom={2}
           >
-            I&apos;m the expert who can{" "}
+            I’m an avid CTF participant who can{" "}
             <span className="text-[#00ff00] font-normal">
-              bridge the gap between
+              leverage my skills in cybersecurity
             </span>{" "}
-            security and technology to give your organization that extra layer
-            of protection to
+            to provide your organization with innovative solutions and a robust defense against
+            cyber threats. I am committed to{" "}
             <span className="text-[#00ff00] font-normal">
-              {" "}
-              stand out from competitors.
+              continuously learning
             </span>{" "}
-            ✨
-          </motion.p>
+            and evolving in this dynamic field to ensure your security posture remains strong.
+        </motion.p>
+
         </motion.div>
       </header>
 
