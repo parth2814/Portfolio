@@ -156,7 +156,7 @@ export function LandingPage() {
           >
           I am an enthusiastic cybersecurity professional with a strong track record in Capture The Flag (CTF) challenges, 
           including the Cyber Defense CTF by Level Effect and achieving 10th place in Hack the Havoc. 
-          I’ve earned the "Hacker" rank on Hack The Box (HTB).
+          I&apos;ve earned the "Hacker" rank on Hack The Box (HTB).
           </motion.p>
 
           <motion.p
@@ -164,7 +164,7 @@ export function LandingPage() {
             variants={textRevealVariants}
             custom={2}
           >
-            I’m an avid CTF participant who can{" "}
+            I&apos;m an avid CTF participant who can{" "}
             <span className="text-[#00ff00] font-normal">
               leverage my skills in cybersecurity
             </span>{" "}
