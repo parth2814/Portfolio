@@ -8,17 +8,17 @@ views: 237
 # Welcome
 
 Overview of challenge categories ahead:
-![Image-1](image/6.png)
+![Image-1](image/kpmg_image/6.png)
 
 Target flag location:
-![Image-2](image/7.png)
+![Image-2](image/kpmg_image/7.png)
 
 ---
 
 # OSINT Investigation
 
 Initial target identification screen:
-![Screenshot 2024-08-11 121938.png](image/30.png)
+![Screenshot 2024-08-11 121938.png](image/kpmg_image/30.png)
 
 Located Base64 encoded message in target's LinkedIn profile:
 ```plaintext
@@ -26,51 +26,51 @@ TmV2ZXlgZ29ubmEgZ212ZSB5b3UgdXAKTmV2ZXlgZ29ubmEgbGVOlHlvdSBkb3duCk51dmVylGdvbm5h
 ```
 
 LinkedIn profile analysis:
-![Screenshot 2024-08-11 122125.png](image/57.png)
+![Screenshot 2024-08-11 122125.png](image/kpmg_image/57.png)
 
 Decoding process:
-![Screenshot 2024-08-11 122141.png](image/25.png)
+![Screenshot 2024-08-11 122141.png](image/kpmg_image/25.png)
 
 Pastebin discovery:
-![Screenshot 2024-08-11 122210.png](image/14.png)
+![Screenshot 2024-08-11 122210.png](image/kpmg_image/14.png)
 
 Discord account identification:
-![8.png](image/8.png)
+![8.png](image/kpmg_image/8.png)
 
 Encoded content location:
-![image.png](image/9.png)
+![image.png](image/kpmg_image/9.png)
 
 Protected content discovery:
-![image.png](image/10.png)
+![image.png](image/kpmg_image/10.png)
 
 Account analysis phase 1:
-![image.png](image/11.png)
+![image.png](image/kpmg_image/11.png)
 
 Account analysis phase 2:
-![image.png](image/12.png)
+![image.png](image/kpmg_image/12.png)
 
 Password verification:
-![Screenshot 2024-08-11 122922.png](image/15.png)
+![Screenshot 2024-08-11 122922.png](image/kpmg_image/15.png)
 
 Final LinkedIn elements:
-![Screenshot 2024-08-11 122959.png](image/16.png)
-![image.png](image/13.png)
+![Screenshot 2024-08-11 122959.png](image/kpmg_image/16.png)
+![image.png](image/kpmg_image/13.png)
 
 Target acquisition confirmed:
-![Screenshot 2024-08-11 123047.png](image/39.png)
+![Screenshot 2024-08-11 123047.png](image/kpmg_image/39.png)
 
 # Cloud Security Challenges
 
 ## AWS S3 Investigation
 
 Initial challenge parameters:
-![Screenshot 2024-08-11 122031.png](image/1.png)
+![Screenshot 2024-08-11 122031.png](image/kpmg_image/1.png)
 
 Website analysis results:
-![Screenshot 2024-08-11 121823.png](image/2.png)
+![Screenshot 2024-08-11 121823.png](image/kpmg_image/2.png)
 
 Source code examination:
-![Screenshot 2024-08-11 121832.png](image/21.png)
+![Screenshot 2024-08-11 121832.png](image/kpmg_image/21.png)
 
 Extracted AWS credentials:
 ```plaintext
@@ -79,7 +79,7 @@ Bucket: ctf2k24-best
 ```
 
 Directory enumeration results:
-![Screenshot 2024-08-11 121909.png](image/20.png)
+![Screenshot 2024-08-11 121909.png](image/kpmg_image/20.png)
 
 URL construction parameters:
 ```plaintext
@@ -92,33 +92,33 @@ Signature: 5625d8f847a29410e05b91df5628d6d2fa8146eed792c0ae048279798853d1b9
 ```
 
 Access confirmation:
-![Screenshot 2024-08-11 121954.png](image/46.png)
-![32.png](image/32.png)
-![Screenshot 2024-08-11 122009.png](image/3.png)
+![Screenshot 2024-08-11 121954.png](image/kpmg_image/46.png)
+![32.png](image/kpmg_image/32.png)
+![Screenshot 2024-08-11 122009.png](image/kpmg_image/3.png)
 
 ## Secondary S3 Analysis
 Challenge parameters:
-![Screenshot 2024-08-11 122022.png](image/51.png)
+![Screenshot 2024-08-11 122022.png](image/kpmg_image/51.png)
 
 Bucket enumeration:
-![4.png](image/4.png)
+![4.png](image/kpmg_image/4.png)
 
 Flag acquisition:
-![image.png](image/5.png)
+![image.png](image/kpmg_image/5.png)
 
 # Web Exploitation
 
 Session manipulation challenge:
-![Screenshot 2024-08-11 122059.png](image/56.png)
+![Screenshot 2024-08-11 122059.png](image/kpmg_image/56.png)
 
 Authentication interface:
-![Screenshot 2024-08-11 121108.png](image/17.png)
+![Screenshot 2024-08-11 121108.png](image/kpmg_image/17.png)
 
 Source code analysis:
-![Screenshot 2024-08-11 121158.png](image/50.png)
+![Screenshot 2024-08-11 121158.png](image/kpmg_image/50.png)
 
 Session investigation:
-![Screenshot 2024-08-11 121212.png](image/36.png)
+![Screenshot 2024-08-11 121212.png](image/kpmg_image/36.png)
 
 Identified MD5 hashes:
 ```plaintext
@@ -127,28 +127,28 @@ admin → 21232f297a57a5a743894aee4a801fc3
 ```
 
 Access confirmation:
-![Screenshot 2024-08-11 121457.png](image/28.png)
-![Screenshot 2024-08-11 121506.png](image/31.png)
+![Screenshot 2024-08-11 121457.png](image/kpmg_image/28.png)
+![Screenshot 2024-08-11 121506.png](image/kpmg_image/31.png)
 
 # Infrastructure Security
 
 SSH challenge parameters:
-![Screenshot 2024-08-11 121950.png](image/55.png)
+![Screenshot 2024-08-11 121950.png](image/kpmg_image/55.png)
 
 Web interface discovery:
-![Screenshot 2024-08-11 120328.png](image/34.png)
+![Screenshot 2024-08-11 120328.png](image/kpmg_image/34.png)
 
 Code analysis:
-![Screenshot 2024-08-11 120340.png](image/53.png)
+![Screenshot 2024-08-11 120340.png](image/kpmg_image/53.png)
 
 Flag confirmation:
-![Screenshot 2024-08-11 120528.png](image/23.png)
+![Screenshot 2024-08-11 120528.png](image/kpmg_image/23.png)
 
 # Cryptography Puzzles
 
 ## RSA Challenge
 Challenge parameters:
-![Screenshot 2024-08-11 122040.png](image/54.png)
+![Screenshot 2024-08-11 122040.png](image/kpmg_image/54.png)
 
 Initial values:
 ```python
@@ -192,57 +192,57 @@ print("Flag: %s" % m_ascii.strip())
 
 ## Wall Cryptography Challenge
 Challenge interface:
-![Screenshot 2024-08-11 122048.png](image/49.png)
+![Screenshot 2024-08-11 122048.png](image/kpmg_image/49.png)
 
 Initial access:
-![Screenshot 2024-08-11 121641.png](image/37.png)
+![Screenshot 2024-08-11 121641.png](image/kpmg_image/37.png)
 
 Source analysis:
-![Screenshot 2024-08-11 121653.png](image/35.png)
+![Screenshot 2024-08-11 121653.png](image/kpmg_image/35.png)
 
 Decoding process phases:
-![Screenshot 2024-08-11 121714.png](image/33.png)
-![Screenshot 2024-08-11 121739.png](image/26.png)
-![Screenshot 2024-08-11 121759.png](image/58.png)
-![Screenshot 2024-08-11 121837.png](image/45.png)
-![Screenshot 2024-08-11 121903.png](image/43.png)
+![Screenshot 2024-08-11 121714.png](image/kpmg_image/33.png)
+![Screenshot 2024-08-11 121739.png](image/kpmg_image/26.png)
+![Screenshot 2024-08-11 121759.png](image/kpmg_image/58.png)
+![Screenshot 2024-08-11 121837.png](image/kpmg_image/45.png)
+![Screenshot 2024-08-11 121903.png](image/kpmg_image/43.png)
 
 # Mobile Security
 
 APK analysis interface:
-![Screenshot_2024-08-11_122111.png](image/27.png)
+![Screenshot_2024-08-11_122111.png](image/kpmg_image/27.png)
 
 Code examination:
-![image.png](image/42.png)
+![image.png](image/kpmg_image/42.png)
 
 Manifest analysis:
-![image.png](image/29.png)
-![image.png](image/24.png)
-![image.png](image/52.png)
+![image.png](image/kpmg_image/29.png)
+![image.png](image/kpmg_image/24.png)
+![image.png](image/kpmg_image/52.png)
 
 Flag construction:
-![image.png](image/22.png)
+![image.png](image/kpmg_image/22.png)
 
 # Operational Technology
 
 ## Modbus Protocol Analysis
 Protocol interface:
-![Screenshot 2024-08-11 121959.png](image/40.png)
+![Screenshot 2024-08-11 121959.png](image/kpmg_image/40.png)
 
 Data collection:
-![Screenshot 2024-08-11 121143.png](image/19.png)
-![44.png](image/44.png)
+![Screenshot 2024-08-11 121143.png](image/kpmg_image/19.png)
+![44.png](image/kpmg_image/44.png)
 
 Results analysis:
-![image.png](image/48.png)
-![image.png](image/47.png)
+![image.png](image/kpmg_image/48.png)
+![image.png](image/kpmg_image/47.png)
 
 ## MQTT Analysis
 Challenge parameters:
-![Screenshot 2024-08-11 122010.png](image/41.png)
+![Screenshot 2024-08-11 122010.png](image/kpmg_image/41.png)
 
 Protocol investigation:
-![Screenshot 2024-08-11 120824.png](image/18.png)
+![Screenshot 2024-08-11 120824.png](image/kpmg_image/18.png)
 
 ---
 
