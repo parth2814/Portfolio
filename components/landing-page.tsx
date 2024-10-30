@@ -156,7 +156,7 @@ export function LandingPage() {
           >
           I am an enthusiastic cybersecurity professional with a strong track record in Capture The Flag (CTF) challenges, 
           including the Cyber Defense CTF by Level Effect and achieving 10th place in Hack the Havoc. 
-          I&apos;ve earned the "Hacker" rank on Hack The Box (HTB).
+          I&apos;ve earned the &quot;Hacker&quot; rank on Hack The Box (HTB).
           </motion.p>
 
           <motion.p
