@@ -20,7 +20,7 @@ Target flag location:
 Initial target identification screen:
 ![Screenshot 2024-08-11 121938.png](image/kpmg_image/30.png)
 
-Located Base64 encoded message in target's LinkedIn profile:
+This journey started with a name: **Raghava Sai Sarva**. Right away, a LinkedIn link popped up—sweet! But wait, there’s more. Scrolling down, I found a Base64 hash cleverly hidden in the description. And what does a cyber sleuth do with a hash? Decode it, of course! 🕶️:
 ```plaintext
 TmV2ZXlgZ29ubmEgZ212ZSB5b3UgdXAKTmV2ZXlgZ29ubmEgbGVOlHlvdSBkb3duCk51dmVylGdvbm5hlHJ1 bmQgYW5klGRlc2VydCB5b3UKTmV2ZXlgZ29ubmEgbWFrZSB5b3UgY3J5Ck51dmVylGdvbm5hlHNheSBnb29kYnllCk51dmVylGdvbm5hlHRlbGwgYSBsaWUgYW5klGh 1 cnQgeW91 CgpodHRwczovBBhc3RlYmluLmNvbS9uWm1 ibkJRMyAtlG 1 lb3c=
 ```
@@ -28,19 +28,19 @@ TmV2ZXlgZ29ubmEgZ212ZSB5b3UgdXAKTmV2ZXlgZ29ubmEgbGVOlHlvdSBkb3duCk51dmVylGdvbm5h
 LinkedIn profile analysis:
 ![Screenshot 2024-08-11 122125.png](image/kpmg_image/57.png)
 
-Decoding process:
+After some tinkering in CyberChef, I found a **Pastebin link**. So, I jumped in to see what secrets lay hidden.:
 ![Screenshot 2024-08-11 122141.png](image/kpmg_image/25.png)
 
-Pastebin discovery:
+The Pastebin contained another lead—a LinkedIn link, but it also told me to check out a Discord account, **eren_meow**. Intrigued, I dived into Discord.:
 ![Screenshot 2024-08-11 122210.png](image/kpmg_image/14.png)
 
-Discord account identification:
+Found a **Base58 hash**! :
 ![8.png](image/kpmg_image/8.png)
 
 Encoded content location:
 ![image.png](image/kpmg_image/9.png)
 
-Protected content discovery:
+What next? Time to visit Pastebin again, but—plot twist—it’s password-protected! Lucky for me, Discord had the hint: **meowsaurabh123!** 🐱✨:
 ![image.png](image/kpmg_image/10.png)
 
 Account analysis phase 1:
@@ -66,11 +66,13 @@ Target acquisition confirmed:
 Initial challenge parameters:
 ![Screenshot 2024-08-11 122031.png](image/kpmg_image/1.png)
 
-Website analysis results:
+**website link** with no obvious clues. Time to roll up the sleeves and inspect the source code!:
 ![Screenshot 2024-08-11 121823.png](image/kpmg_image/2.png)
 
 Source code examination:
 ![Screenshot 2024-08-11 121832.png](image/kpmg_image/21.png)
+
+Jackpot! The source code revealed an **AWS Access Key** and a **bucket name**: `ctf2k24-best`. With no **secret key**, though, AWS CLI wasn’t an option. So I went on a reconnaissance deep-dive, uncovering a hidden **robots.txt** file, brimming with goodies.
 
 Extracted AWS credentials:
 ```plaintext
@@ -91,19 +93,19 @@ Region: us-east-1
 Signature: 5625d8f847a29410e05b91df5628d6d2fa8146eed792c0ae048279798853d1b9
 ```
 
-Access confirmation:
+I pasted the updated link, and BOOM! Flag secured! 🏆:
 ![Screenshot 2024-08-11 121954.png](image/kpmg_image/46.png)
-![32.png](image/kpmg_image/32.png)
+
 ![Screenshot 2024-08-11 122009.png](image/kpmg_image/3.png)
 
 ## Secondary S3 Analysis
 Challenge parameters:
 ![Screenshot 2024-08-11 122022.png](image/kpmg_image/51.png)
 
-Bucket enumeration:
+This one started with a tantalizing description and a publicly accessible bucket named **kpmg-ctf1**. Without an AWS account, I needed a workaround. Time to get creative!:
 ![4.png](image/kpmg_image/4.png)
 
-Flag acquisition:
+Using `curl`, I grabbed the file with some serious swagger. 🍰 Piece of cake!:
 ![image.png](image/kpmg_image/5.png)
 
 # Web Exploitation
@@ -111,13 +113,10 @@ Flag acquisition:
 Session manipulation challenge:
 ![Screenshot 2024-08-11 122059.png](image/kpmg_image/56.png)
 
-Authentication interface:
+This challenge began with a **login page**. Naturally, I peeked at the source code. Always check the source! And guess what? There were test credentials right there. Feeling like a secret agent, I logged in, only to land on a welcome page.:
 ![Screenshot 2024-08-11 121108.png](image/kpmg_image/17.png)
 
-Source code analysis:
-![Screenshot 2024-08-11 121158.png](image/kpmg_image/50.png)
-
-Session investigation:
+Here’s where the **session cookie** caught my eye—it looked like an **MD5 hash**. After cracking it online, I found it matched the **username**. But wait, what if we use the **admin** MD5 hash as the session key? Yup, that worked like a charm. 💫:
 ![Screenshot 2024-08-11 121212.png](image/kpmg_image/36.png)
 
 Identified MD5 hashes:
@@ -126,8 +125,9 @@ test → 098f6bcd4621d373cade4e832627b4f6
 admin → 21232f297a57a5a743894aee4a801fc3
 ```
 
-Access confirmation:
+Got the flag! 🏆:
 ![Screenshot 2024-08-11 121457.png](image/kpmg_image/28.png)
+
 ![Screenshot 2024-08-11 121506.png](image/kpmg_image/31.png)
 
 # Infrastructure Security
@@ -136,12 +136,14 @@ SSH challenge parameters:
 ![Screenshot 2024-08-11 121950.png](image/kpmg_image/55.png)
 
 Web interface discovery:
+
 ![Screenshot 2024-08-11 120328.png](image/kpmg_image/34.png)
 
-Code analysis:
+With a URL, host, and port, I embarked on my final challenge. After some poking around, I confirmed **SSH was running**. So I accessed the page, scanned the **page source**, and found my clue: username and password for the **Ezio** user. Perfect!:
+
 ![Screenshot 2024-08-11 120340.png](image/kpmg_image/53.png)
 
-Flag confirmation:
+I connected via SSH and found the flag inside `ezio.txt`. Another successful mission! 😎:
 ![Screenshot 2024-08-11 120528.png](image/kpmg_image/23.png)
 
 # Cryptography Puzzles
@@ -215,12 +217,16 @@ APK analysis interface:
 Code examination:
 ![image.png](image/kpmg_image/42.png)
 
-Manifest analysis:
+after rummaging around in **MainActivity**, I stumbled upon something _golden_—the **last part of the flag**! 🎉 But hold up… I still needed the **first part**. :
 ![image.png](image/kpmg_image/29.png)
+
+Cue the “Aha!” moment 💡: _Where could it be hiding?_ Then it hit me! The **AndroidManifest.xml** file! This trusty ol' file often holds all sorts of secrets, so I dove right in. Sure enough—BAM! The **first part of the flag** was just sitting there, waiting to be discovered.
+
 ![image.png](image/kpmg_image/24.png)
+
 ![image.png](image/kpmg_image/52.png)
 
-Flag construction:
+Flag:
 ![image.png](image/kpmg_image/22.png)
 
 # Operational Technology
@@ -229,12 +235,14 @@ Flag construction:
 Protocol interface:
 ![Screenshot 2024-08-11 121959.png](image/kpmg_image/40.png)
 
-Data collection:
+After connecting with nc we get some hex code :
 ![Screenshot 2024-08-11 121143.png](image/kpmg_image/19.png)
 ![44.png](image/kpmg_image/44.png)
 
-Results analysis:
+After taking all the hex i only kept the first two part of the hex:
 ![image.png](image/kpmg_image/48.png)
+
+After decoding this Hex, I got flag BOOM!!!! 
 ![image.png](image/kpmg_image/47.png)
 
 ## MQTT Analysis
