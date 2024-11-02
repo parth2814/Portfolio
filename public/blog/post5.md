@@ -1,7 +1,7 @@
 ---
 title: "Hack Havoc 2.0 CTF 2024"
 subtitle: "CyberMaterialHavoc"
-date: "2024-08-11"
+date: "2024-10-27"
 views: 237
 ---
 # Bonus

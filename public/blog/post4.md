@@ -1,6 +1,6 @@
 ---
-title: "CTF Challenge Writeups 2024"
-subtitle: "A Journey Through Security Challenges: From OSINT to OT"
+title: "KPMG CTF Challenge Writeups 2024"
+subtitle: "A Journey Through Security Challenges"
 date: "2024-08-11"
 views: 237
 ---
